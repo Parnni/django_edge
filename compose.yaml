@@ -9,5 +9,13 @@ services:
       - timescaled_data:/var/lib/postgresql/data
     restart: unless-stopped
 
+  redis:
+    image: 'redis:latest'
+    ports:
+      - '6555:6379'
+    volumes:
+      - redis_data:/data
+
 volumes:
   timescaled_data:
+  redis_data:
