@@ -81,6 +81,7 @@ if DATABASE_URL:
     DATABASES = {
         'default': dj_database_url.config(
             default=DATABASE_URL,
+            engine='timescale.db.backends.postgresql',
             conn_max_age=600,
         )
     }
