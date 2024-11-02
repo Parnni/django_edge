@@ -19,7 +19,7 @@ SECRET_KEY = config('DJANGO_SECRET_KEY', cast=str)
 
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
