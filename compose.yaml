@@ -1,5 +1,7 @@
 services:
   timescaledb:
+    networks:
+      cfe:
     image: 'timescale/timescaledb:latest-pg16'
     env_file:
       - .env.db
@@ -10,12 +12,30 @@ services:
     restart: unless-stopped
 
   redis:
+    networks:
+      cfe:
     image: 'redis:latest'
     ports:
       - '6555:6379'
     volumes:
       - redis_data:/data
 
+  web:
+    networks:
+      cfe:
+    build:
+      context: .
+    environment:
+      - NODE_ID=0
+      - PORT=8088
+    env_file:
+      - .env.web-container
+    ports:
+      - '8088:8088'
+
 volumes:
   timescaled_data:
   redis_data:
+
+networks:
+  cfe:
