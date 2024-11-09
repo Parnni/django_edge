@@ -17,7 +17,7 @@ from helpers import config
 BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = config('DJANGO_SECRET_KEY', cast=str)
 
-DEBUG = True
+DEBUG = config('DJANGO_DEBUG', cast=bool, default=True)
 
 ALLOWED_HOSTS = ['*']
 
